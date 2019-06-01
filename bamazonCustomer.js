@@ -23,6 +23,16 @@ connection.connect(function(err){
 
 function start(){
     inquirer.prompt({
-        name:
-    })
+        name: "customer",
+        type: "list",
+        message: "Would you like to see the current items available?",
+        choices: ["Yes", "NO"]
+    }).then(function(answer){
+        if(answer.customer === "Yes") {
+            displayItems();
+        } else{
+            connection.end();
+        }
+    });
 }
+
